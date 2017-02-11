@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Dropdown</title>
+
+</head>
+
+<style>
+    
+body {
+  width: 100%;
+  height: 100%;
+  background: url(https://img3.goodfon.su/original/1920x1080/7/26/chasy-budilnik-vremya-4010.jpg);
+  background-position: top;
+  background-size: cover;
+}
+
+nav {
+  display: block;
+  width: 270px;
+  height: 300px;
+  margin-top: 3%;
+  margin-left: 20%;
+}
+
+ul { list-style: none; }
+
+.show { display: none; }
+
+ul li a {
+  display: block;
+  position: relative;
+  user-select: none;
+  right: 40px;
+  top: -15px;
+  width: 270px;
+  height: 40px;
+  line-height: 45px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255,255,255,.3);
+  text-align: center;
+  margin-bottom: 2px;
+  border-radius: 5px;
+}
+
+@keyframes opaciting {
+  0% {opacity: .3;}
+  100% {opacity: 1;}
+}
+
+.menu, .second-menu {
+  animation: opaciting 1s linear;
+}
+
+.second-menu li {
+  position: relative;
+  top: 0;
+  left: -10px;
+}
+
+ul li a:hover {
+  background: #333;
+  color: azure;
+  transition: all .3s ease;
+}
+
+#second-dropdown { position: relative; }
+
+#second-dropdown:after {
+  position: absolute;
+  content: '\25BA';
+  color: #fff;
+  font-size: 1.1em;
+  transform: rotate(90deg);
+  right: 15px;
+  top: 0;
+}
+
+#second-dropdown:hover:after {
+  animation: moveTo .7s linear infinite;
+}
+
+h2 {
+  width: 320px;
+  height: 50px;
+  line-height: 50px;
+  background: rgba(255,255,255,.3);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.8em;
+  position: relative;
+  user-select: none;
+}
+
+@keyframes moveTo {
+  from { top: 0; }
+  to { top: 3px; }
+}
+
+h2:hover:after {
+  animation: moveTo .7s linear infinite;
+}
+
+h2:after {
+  position: absolute;
+  content: '\25BA';
+  color: #fff;
+  font-size: .7em;
+  transform: rotate(90deg);
+  right: 12px;
+  top: 0;
+}
+
+h2:hover {
+  background: #222;
+  color: azure;
+  transition: all .3s linear;
+  cursor: pointer;
+}
+    
+</style>
+
+<body>
+
+ <nav>
+  <h2 id="dropdown"><em>Simple</em> dropdown</h2>
+    <ul class="menu show">
+        <li><a href="#">Ipsum1</a></li>
+        <li><a href="#">Ipsum2</a></li>
+        <li><a href="#" id="second-dropdown">Ipsum3</a>
+              <ul class="second-menu show">
+                <li><a href="#">Subipsum1</a></li>
+                <li><a href="#">Subipsum2</a></li>
+                <li><a href="#">Subipsum3</a></li>
+              </ul>  
+         </li>
+        <li><a href="#">Ipsum4</a></li>
+    </ul>
+</nav>
+   
+   
+<script>
+    
+    (function() {
+  
+  var h2 = document.getElementById('dropdown');
+      h2.addEventListener('click', function() {
+     var menu = document.querySelector('.menu');
+      menu.classList.toggle('show');
+    });
+  
+   var secondDropdown = document.getElementById('second-dropdown');
+        secondDropdown.onclick = function() {
+          var secondMenu = document.querySelector('.second-menu');
+          secondMenu.classList.toggle('show');
+        };
+}());
+
+</script>
+</body>
+
+</html>
